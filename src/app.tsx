@@ -1,20 +1,19 @@
-import './app.scss';
 import React from 'react';
-import {useAppSelector} from "./hooks";
-import Routes from "./routes";
-import game from "./phaser-game"
+
+import { PhaserGame } from './phaser-game';
+import { GameContainer } from './component';
+
+import './app.scss';
 
 window.addEventListener('load', () => {
-      game.scene.start("bootstrap")
-
-})
+  PhaserGame.scene.start('bootstrap');
+});
 
 export const App = () => {
-    const page = useAppSelector((state) => state.application.currentPage)
-    return (
-        <div className="inherit-size">
-            {Routes.get(page)}
-        </div>
-    );
+  // TODO Сделать роутинг
+  return (
+    <div className="inherit-size">
+      <GameContainer />
+    </div>
+  );
 };
-export default App;

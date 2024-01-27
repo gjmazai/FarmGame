@@ -1,14 +1,14 @@
 import Phaser from 'phaser'
-import BootstrapScene from "./scenes/bootstrap.scene";
-import GameScene from "./scenes/game.scene";
+
+import { BootstrapScene, GameScene } from "./service";
 
 const config = {
-  type: Phaser.CANVAS,
+  type: Phaser.WEBGL,
   backgroundColor: '#000000',
   parent: 'game-root',
   canvas: document.getElementById('game-canvas') as HTMLCanvasElement,
-  width: window.innerWidth ,
-  height: window.innerHeight - 10,
+  width: window.visualViewport.width,
+  height: window.visualViewport.height - 4,
   pixelArt: true,
   scene: [BootstrapScene, GameScene],
   physics: {
@@ -21,12 +21,6 @@ const config = {
 }
 
 
-const phaserGame = new Phaser.Game(config)
+export const PhaserGame = new Phaser.Game(config);
 
-;(window as any).game = phaserGame
-
-
-
-
-
-export default phaserGame
+(window as any).game = PhaserGame;
