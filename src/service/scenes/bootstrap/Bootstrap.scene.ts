@@ -1,4 +1,10 @@
-export default class BootstrapScene extends Phaser.Scene {
+/**
+ * Модуль экспортирует сцену загрузки медиа.
+ * 
+ * @author gjmazai
+ */
+
+export class BootstrapScene extends Phaser.Scene {
     constructor() {
         super('bootstrap')
     }
@@ -10,5 +16,4 @@ export default class BootstrapScene extends Phaser.Scene {
     create() {
         this.scene.start('game')
     }
-
 }

@@ -1,4 +1,4 @@
-import {checkExists} from "./utils";
+import { checkExists } from "./utils";
 
 export type ValueSetter<T> = (T) => void;
 
