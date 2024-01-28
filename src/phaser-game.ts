@@ -1,6 +1,6 @@
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 
-import { BootstrapScene, GameScene } from "./service";
+import { BootstrapScene, GameScene } from './service';
 
 const config = {
   type: Phaser.WEBGL,
@@ -15,11 +15,10 @@ const config = {
     default: 'arcade',
     arcade: {
       debug: false,
-      gravity: { y: 400 }
-    }
-  }
-}
-
+      gravity: { y: 400 },
+    },
+  },
+};
 
 export const PhaserGame = new Phaser.Game(config);
 

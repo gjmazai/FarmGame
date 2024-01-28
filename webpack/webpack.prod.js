@@ -106,15 +106,13 @@ module.exports = async () =>
           onEnd: {
             delete: [
               {
-                source:  '../src/main/resources/static/**.*',
+                source: '../src/main/resources/static/**.*',
                 options: {
                   force: true,
                 },
-              }
+              },
             ],
-            copy: [
-              { source: '../frontend/build/resources/main/static', destination: '../src/main/resources/static' }
-            ],
+            copy: [{ source: '../frontend/build/resources/main/static', destination: '../src/main/resources/static' }],
           },
         },
       }),

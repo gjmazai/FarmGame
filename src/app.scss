@@ -1,4 +1,3 @@
-
 body {
   --bs-body-color: #ffffff;
   margin: 0;
@@ -97,8 +96,8 @@ Generic styles
 }
 
 /* other generic styles */
-.white-text{
-  color:white;
+.white-text {
+  color: white;
 }
 .title {
   font-size: 1.25em;
@@ -318,18 +317,33 @@ Metrics and Health styles
   margin-right: 5px;
 }
 
-.nav-tabs .nav-link{
+.nav-tabs .nav-link {
   transition: none;
 }
-.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
   border-color: transparent transparent transparent !important;
 }
 .nav-tabs .nav-link:focus-visible,
-.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover, .nav-pills .nav-link:focus, .nav-pills .nav-link:hover, .nav-pills .nav-item.open .nav-link:focus, .nav-pills .nav-item.open .nav-link:hover ,
-  .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active:hover, .nav-tabs .nav-item.open .nav-link:focus, .nav-tabs .nav-item.open .nav-link:hover, .nav-pills .nav-link.active:focus, .nav-pills .nav-link.active:hover, .nav-pills .nav-item.open .nav-link:focus, .nav-pills .nav-item.open .nav-link:hover {
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-item.open .nav-link:focus,
+.nav-tabs .nav-item.open .nav-link:hover,
+.nav-pills .nav-link:focus,
+.nav-pills .nav-link:hover,
+.nav-pills .nav-item.open .nav-link:focus,
+.nav-pills .nav-item.open .nav-link:hover,
+.nav-tabs .nav-link.active:focus,
+.nav-tabs .nav-link.active:hover,
+.nav-tabs .nav-item.open .nav-link:focus,
+.nav-tabs .nav-item.open .nav-link:hover,
+.nav-pills .nav-link.active:focus,
+.nav-pills .nav-link.active:hover,
+.nav-pills .nav-item.open .nav-link:focus,
+.nav-pills .nav-item.open .nav-link:hover {
   color: lightgray;
 }
-.inherit-size{
+.inherit-size {
   min-width: inherit;
   min-height: inherit;
 }
@@ -390,7 +404,6 @@ Metrics and Health styles
   bottom: 0;
 }
 
-
 .bottom-center {
   left: 0;
   right: 0;
@@ -425,7 +438,6 @@ Metrics and Health styles
 .game-form {
   padding: 20px;
 }
-
 
 .fade-out {
   -webkit-animation: fadeOutAnimation 5s linear 5s forwards;
@@ -472,6 +484,3 @@ Metrics and Health styles
     opacity: 0;
   }
 }
-
-
-

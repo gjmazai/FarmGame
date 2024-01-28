@@ -38,7 +38,7 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
 
 ## Preview
 
-This is what you get after installing this template. A simple and clean starter template written in TypeScript. 
+This is what you get after installing this template. A simple and clean starter template written in TypeScript.
 
 <img src="readme/build.png" width="640" style='border: 0.25em solid #e1e4e8;border-radius: 5px;'/>
 
@@ -68,37 +68,36 @@ $ npm run build
 
 This template allows to use react hooks outside of react components
 
-To use this take a look to /src/controls.ts  file to create your own handlers
+To use this take a look to /src/controls.ts file to create your own handlers
 
 To register new handler:
+
 ```typescript
-
 class GameControls {
-    private controls: GameControlsMap = {}
+  private controls: GameControlsMap = {};
 
-    // Create your own register controls method
-    public registerGameDebugControls(controls: GameDebugControls) {
-        this.controls.debug = controls
-    }
+  // Create your own register controls method
+  public registerGameDebugControls(controls: GameDebugControls) {
+    this.controls.debug = controls;
+  }
 
-    // Create your own valueSetter method
-    public setFps(fps: number) {
-        if (checkExists(this.controls.debug))
-            this.controls.debug.setFps(fps)
-    }
+  // Create your own valueSetter method
+  public setFps(fps: number) {
+    if (checkExists(this.controls.debug)) this.controls.debug.setFps(fps);
+  }
 
-    public setVersion(version: string) {
-        if (checkExists(this.controls.debug))
-            this.controls.debug.setVersion(version)
-    }
+  public setVersion(version: string) {
+    if (checkExists(this.controls.debug)) this.controls.debug.setVersion(version);
+  }
 }
 ```
 
 To use it inside phaser game:
 
 ```typescript
-CONTROLS.setVersion(`Phaser v${Phaser.VERSION}`)
+CONTROLS.setVersion(`Phaser v${Phaser.VERSION}`);
 ```
+
 ## Websocket support
 
 Use Network class to communicate with ws server...
@@ -106,19 +105,17 @@ Use Network class to communicate with ws server...
 First, initialize websocket to communicate with specific server host:
 
 ```typescript
-network.initConnection("<your ws host>")
+network.initConnection('<your ws host>');
 ```
 
 Then use functionality directly:
 
 ```typescript
-network.on(MessageType.UPDATE, data => {
-
-}, this)
+network.on(MessageType.UPDATE, data => {}, this);
 ```
 
 ```typescript
-network.send(MessageType.PLAYER_KEY_DOWN, {inputId: 'RIGHT', state: false});
+network.send(MessageType.PLAYER_KEY_DOWN, { inputId: 'RIGHT', state: false });
 ```
 
 ## Credits
