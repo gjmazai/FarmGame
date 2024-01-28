@@ -1,36 +1,33 @@
-import { checkExists } from "./utils";
-
-export type ValueSetter<T> = (T) => void;
+import { TValueSetter } from './commontypes';
+import { checkExists } from './utils';
 
 // Create your own react controls interface
 interface GameDebugControls {
-    setVersion: ValueSetter<string>
-    setFps: ValueSetter<number>
+  setVersion: TValueSetter<string>;
+  setFps: TValueSetter<number>;
 }
 
 // Add your own react controls
 interface GameControlsMap {
-    debug?: GameDebugControls
+  debug?: GameDebugControls;
 }
 
 class GameControls {
-    private controls: GameControlsMap = {}
+  private controls: GameControlsMap = {};
 
-    // Create your own register controls method
-    public registerGameDebugControls(controls: GameDebugControls) {
-        this.controls.debug = controls
-    }
+  // Create your own register controls method
+  public registerGameDebugControls(controls: GameDebugControls) {
+    this.controls.debug = controls;
+  }
 
-    // Create your own valueSetter method
-    public setFps(fps: number) {
-        if (checkExists(this.controls.debug))
-            this.controls.debug.setFps(fps)
-    }
+  // Create your own valueSetter method
+  public setFps(fps: number) {
+    if (checkExists( this.controls.debug )) this.controls.debug.setFps(fps);
+  }
 
-    public setVersion(version: string) {
-        if (checkExists(this.controls.debug))
-            this.controls.debug.setVersion(version)
-    }
+  public setVersion(version: string) {
+    if (checkExists( this.controls.debug )) this.controls.debug.setVersion(version);
+  }
 }
 
-export const CONTROLS: GameControls = new GameControls()
+export const CONTROLS: GameControls = new GameControls();

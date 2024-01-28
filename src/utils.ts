@@ -1,2 +1,1 @@
-export const checkExists = data => data !== null && data !== undefined;
-
+export const checkExists = ( data: any ) => data !== null && data !== undefined;

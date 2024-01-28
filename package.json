@@ -2,19 +2,16 @@
   "name": "copy-unknown-game",
   "version": "0.1",
   "description": "Phaser 3 with TypeScript , webpack, react, and websocket.",
+  "license": "MIT",
   "author": {
     "name": "gjmazai"
   },
-  "engines": {
-    "node": ">=12"
-  },
-  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "build": "npm run webapp:prod --",
-    "editor": "phasereditor2d-launcher -project .",
     "clean-www": "rimraf build/resources/main/static/app/{src,build/}",
     "cleanup": "rimraf build/resources/main/static/",
+    "editor": "phasereditor2d-launcher -project.",
     "lint:fix": "npm run lint -- --fix",
     "prettier:check": "prettier --check \"{,src/**/,webpack/}*.{md,json,yml,html,cjs,mjs,js,ts,tsx,css,scss,java}\"",
     "prettier:format": "prettier --write \"{,src/**/,webpack/}*.{md,json,yml,html,cjs,mjs,js,ts,tsx,css,scss,java}\"",
@@ -106,5 +103,8 @@
     "webpack-merge": "5.8.0",
     "webpack-notifier": "1.15.0",
     "workbox-webpack-plugin": "6.5.2"
+  },
+  "engines": {
+    "node": ">=12"
   }
 }
