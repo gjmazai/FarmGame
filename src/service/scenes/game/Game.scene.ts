@@ -9,8 +9,8 @@ import { action, makeObservable, observable } from 'mobx';
 import Vector2 = Phaser.Math.Vector2;
 
 import { CONTROLS } from '../../../controls';
-import { PhaserLogo } from '../../../actors';
 
+import { PhaserLogo } from '../../phaserLogo';
 import { network, MessageType } from '../../network';
 
 import { IGameScene } from './IGameScene';
