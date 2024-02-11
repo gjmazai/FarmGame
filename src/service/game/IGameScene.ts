@@ -4,7 +4,7 @@
  * @author gjmazai
  */
 
-import { TValueSetter } from '../../../commontypes';
+import { TValueSetter } from '../../commontypes';
 
 /** Интерфейс описывающий сцену игры. Исключая методы предоставляющие Phaser.Scene */
 export interface IGameScene extends Phaser.Scene {
