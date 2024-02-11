@@ -7,18 +7,23 @@
 
 export interface ITiles {
 	/** Тип плитки. */
-	readonly type: ETiletipe;
-	
+	readonly type: ETileTipe;
+
 	/** Идентификатор в массиве метаданных. */
 	readonly id: number;
 
 	/** Максимально возможное число одинаковых плиток. */
 	readonly maxCount: number;
 
-	/** Позиция относительно начального положения. */
-	readonly tilePosition: ETilePosition;
+	/** Поворот относительно начального положения. Начальное положение = top @see ETileTurn. */
+	readonly tileTurn: ETileTurn;
 
-	/** Список местностей по краям плитки. */
+	readonly tilePosition: TTilePosition;
+
+	/**
+	 * Список местностей по краям плитки.
+	 * Исчисление начинается с верхней грани и идет по часовой стрелке, как у padding.
+	 */
 	readonly tileEndsList: [ EPlace, EPlace, EPlace, EPlace ];
 
 	/** Список возможных позиций выставления мини-чела, относительно начального положения. */
@@ -31,23 +36,29 @@ export interface ITiles {
 	isInstalled: boolean;
 
 	/**
-	 * Метод устанавливает новую позицию тайла.
-	 * @param duration - направление в которое может крутиться тайл.
+	 * Метод устанавливает новую позицию для тайла.
+	 * @param position - позиция по осям в координатной сетке.
 	 */
-	setTilePosition: ( duration: EDuration ) => void;
+	setTilePosition( position: TTilePosition ): void;
+
+	/**
+	 * Метод устанавливает новое направление для тайла.
+	 * @param turn - поворот в которое может крутиться тайл.
+	 */
+	setTileTurn( turn: EDuration ): void;
 
 	/**
 	 * Метод устанавливает позицию мини-чела.
 	 * @param manPosition - позиция мини-чела.
 	 */
-	setManPosition: ( manPosition: EManPosition ) => void;
+	setManPosition( manPosition: EManPosition ): void;
 }
 
-/**
- * Набор позиций плитки относительно начального положения.
- * Начальное положение = top
- */
-export enum ETilePosition {
+/** Тип описывающий позицию тайла. Две цифры: первая позиция по оси абцисс, вторая соответсвенно по оси ординат. */
+export type TTilePosition = [ number, number ];
+
+/** Набор поворотов плитки. */
+export enum ETileTurn {
 	top,
 	right,
 	bottom,
@@ -56,12 +67,9 @@ export enum ETilePosition {
 
 /**
  * Набор позицций который может принимать мини-чел.
- * 
+ * //TODO заполнить...
  */
-export enum EManPosition {
-
-
-}
+export enum EManPosition {}
 
 /** Набор направлений в которое можно крутить плитку.  */
 export enum EDuration {
@@ -72,15 +80,15 @@ export enum EDuration {
 /** Набор местностей. */
 export enum EPlace {
 	/** Дорога. */
-	r = 'road',
+	road = 'road',
 	/** Замок. */
-	c = 'castle',
+	castle = 'castle',
 	/** Поле. */
-	f = 'field'
+	field = 'field'
 }
 
 /** Типы плиток. */
-export enum ETiletipe {
+export enum ETileTipe {
 	/** Центр замка. */
 	CastleCenter,
 	/** Центр замка с входом. */
@@ -95,8 +103,6 @@ export enum ETiletipe {
 	CastleSidesRoad,
 	/** Замок в виде трубы. */
 	CastleTube,
-	/** Замок в виде трубы со входами. */
-	CastletubeEntries,
 	/** Одна стена замка. */
 	CastleWall,
 	/** Стена замка и дорога с изгибом влево. */
@@ -115,8 +121,6 @@ export enum ETiletipe {
 	CastleWallRoad,
 	/** Монастырь. */
 	Monastery,
-	/** Монастырь с перекрестком. */
-	MonasteryJunction,
 	/** Монастырь с дорогой. */
 	MonasteryRoad,
 	/** Дорога. */
