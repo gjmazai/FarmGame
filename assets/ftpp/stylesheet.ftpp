@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "version": "0.6.7"
+  },
+  "savePath": "C:\\Game\\copyGame\\assets\\spritesheets",
+  "images": [
+    {
+      "name": "chiken-mask.png",
+      "path": "C:/Game/copyGame/assets/png/chiken-mask.png",
+      "folder": ""
+    },
+    {
+      "name": "chiken04.png",
+      "path": "C:/Game/copyGame/assets/png/chiken04.png",
+      "folder": ""
+    },
+    {
+      "name": "chiken05.png",
+      "path": "C:/Game/copyGame/assets/png/chiken05.png",
+      "folder": ""
+    },
+    {
+      "name": "chiken06.png",
+      "path": "C:/Game/copyGame/assets/png/chiken06.png",
+      "folder": ""
+    },
+    {
+      "name": "chiken07.png",
+      "path": "C:/Game/copyGame/assets/png/chiken07.png",
+      "folder": ""
+    },
+    {
+      "name": "corn-mask.png",
+      "path": "C:/Game/copyGame/assets/png/corn-mask.png",
+      "folder": ""
+    },
+    {
+      "name": "corn00.png",
+      "path": "C:/Game/copyGame/assets/png/corn00.png",
+      "folder": ""
+    },
+    {
+      "name": "corn01.png",
+      "path": "C:/Game/copyGame/assets/png/corn01.png",
+      "folder": ""
+    },
+    {
+      "name": "corn02.png",
+      "path": "C:/Game/copyGame/assets/png/corn02.png",
+      "folder": ""
+    },
+    {
+      "name": "corn03.png",
+      "path": "C:/Game/copyGame/assets/png/corn03.png",
+      "folder": ""
+    },
+    {
+      "name": "cow-mask.png",
+      "path": "C:/Game/copyGame/assets/png/cow-mask.png",
+      "folder": ""
+    },
+    {
+      "name": "cow12.png",
+      "path": "C:/Game/copyGame/assets/png/cow12.png",
+      "folder": ""
+    },
+    {
+      "name": "cow13.png",
+      "path": "C:/Game/copyGame/assets/png/cow13.png",
+      "folder": ""
+    },
+    {
+      "name": "cow14.png",
+      "path": "C:/Game/copyGame/assets/png/cow14.png",
+      "folder": ""
+    },
+    {
+      "name": "cow15.png",
+      "path": "C:/Game/copyGame/assets/png/cow15.png",
+      "folder": ""
+    },
+    {
+      "name": "icon-corn.png",
+      "path": "C:/Game/copyGame/assets/png/icon-corn.png",
+      "folder": ""
+    },
+    {
+      "name": "icon-egg.png",
+      "path": "C:/Game/copyGame/assets/png/icon-egg.png",
+      "folder": ""
+    },
+    {
+      "name": "icon-milk.png",
+      "path": "C:/Game/copyGame/assets/png/icon-milk.png",
+      "folder": ""
+    },
+    {
+      "name": "icon-money.png",
+      "path": "C:/Game/copyGame/assets/png/icon-money.png",
+      "folder": ""
+    }
+  ],
+  "folders": [],
+  "packOptions": {
+    "textureName": "stylesheet",
+    "textureFormat": "png",
+    "removeFileExtension": false,
+    "prependFolderName": true,
+    "base64Export": false,
+    "tinify": false,
+    "tinifyKey": "",
+    "scale": 1,
+    "filter": "none",
+    "exporter": "JSON (hash)",
+    "fileName": "pack-result",
+    "savePath": "C:\\Game\\copyGame\\assets\\spritesheets",
+    "width": 2048,
+    "height": 2048,
+    "fixedSize": false,
+    "powerOfTwo": false,
+    "padding": 1,
+    "extrude": 0,
+    "allowRotation": true,
+    "allowTrim": true,
+    "trimMode": "trim",
+    "alphaThreshold": "0",
+    "detectIdentical": true,
+    "packer": "MaxRectsPacker",
+    "packerMethod": "Smart"
+  }
+}
