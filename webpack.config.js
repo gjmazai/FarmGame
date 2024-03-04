@@ -9,19 +9,19 @@ export const devtool = 'cheap-source-map';
 export const devServer = {
 	static: './dist',
 	hot: true,
-	port: 8866,
+	port: 8866
 };
 export const module = {
 	rules: [
 		{
 			test: /\.ts$/,
 			use: 'ts-loader',
-			exclude: /node_modules/,
-		},
-	],
+			exclude: /node_modules/
+		}
+	]
 };
 export const resolve = {
-	extensions: ['.ts', '.js'],
+	extensions: ['.ts', '.js']
 };
 export const optimization = {
 	splitChunks: {
@@ -30,27 +30,27 @@ export const optimization = {
 			commons: {
 				test: /[\\/]node_modules[\\/]/,
 				name: 'vendor',
-				chunks: 'initial',
-			},
-		},
-	},
+				chunks: 'initial'
+			}
+		}
+	}
 };
 export const output = {
 	filename: '[name].bundle.js',
 	chunkFilename: '[name].chunk.js',
 	path: _resolve(__dirname, 'dist'),
-	clean: true,
+	clean: true
 };
 export const plugins = [
 	new HtmlWebpackPlugin({
 		filename: 'index.html',
 		template: './src/index.html',
-		inject: true,
+		inject: true
 	}),
 	new CopyPlugin({
 		patterns: [
 			{ from: 'src/assets/spritesheets/**', to: 'assets/spritesheets/[name][ext]' },
-			{ from: 'src/settings.json', to: '[name][ext]' },
-		],
-	}),
+			{ from: 'src/settings.json', to: '[name][ext]' }
+		]
+	})
 ];
