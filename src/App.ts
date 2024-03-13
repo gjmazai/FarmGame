@@ -5,6 +5,7 @@
  */
 
 import { Application } from 'pixi.js';
+import 'reflect-metadata';
 
 import { GameLoader } from './gameLoader';
 
