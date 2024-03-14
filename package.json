@@ -29,6 +29,8 @@
     "webpack-dev-server": "^5.0.2"
   },
   "dependencies": {
-    "debug": "^4.3.4"
+    "debug": "^4.3.4",
+    "reflect-metadata": "^0.2.1",
+    "typedi": "^0.10.0"
   }
 }

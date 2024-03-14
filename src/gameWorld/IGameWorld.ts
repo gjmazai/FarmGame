@@ -4,16 +4,14 @@
  * @author gjmazai
  */
 
-import { type Application } from 'pixi.js'
+import { type Application } from 'pixi.js';
 
-export class World {
-	public app: Application<HTMLCanvasElement>
-	constructor({ app }: { app: Application<HTMLCanvasElement> }) {
-		this.app = app
-		this.app.ticker.add(this.handleAppTick)
-		this.container.on('pointertap', this.handleClick)
-	}
+export interface IWorld {
+	app: Application<HTMLCanvasElement>;
+	statusBar: IStatusBar;
+	farmGrid: IFarmGrid;
+	shopBar: IShopBar;
 
-	handleAppTick = (): void => { }
-	handleClick = (): void => { }
+	handleAppTick(): void;
+	handleClick(): void;
 }
