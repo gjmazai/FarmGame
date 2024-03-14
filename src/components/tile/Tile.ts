@@ -11,6 +11,7 @@ import { getId } from '../../utils';
 import { type TColor, type ITile, ECursor } from './ITile';
 
 export class Tile extends Container implements ITile {
+	/** Конфигурация цветов по дефолту. */
 	static COLOR: TColor = {
 		regular: 0xffffff,
 		active: 0x0d21a1,
@@ -29,16 +30,16 @@ export class Tile extends Container implements ITile {
 	cellHeight: number;
 	isSelected: boolean;
 
-	constructor (
-		showSelected: boolean,
-		showHover: boolean,
-		posX: number,
-		posY: number,
-		cellWidth: number,
-		cellHeight: number,
-		isSelected: boolean,
-		onClick: <T extends ITile>(tile: T) => void
-	) {
+	constructor ({
+		showSelected,
+		showHover,
+		posX,
+		posY,
+		cellWidth,
+		cellHeight,
+		isSelected,
+		onClick
+	}: TTileConstructorParams) {
 		super();
 		this.graphics = new Graphics();
 		this.addChild(this.graphics);
@@ -53,6 +54,8 @@ export class Tile extends Container implements ITile {
 		this.cellHeight = cellHeight;
 		this.isSelected = isSelected;
 		this.onClick = onClick;
+
+		this.position = { x: posX, y: posY };
 
 		this.on('mouseover', this.handleMouseOver);
 		this.on('mouseout', this.handleMouseOut);
@@ -125,3 +128,15 @@ export class Tile extends Container implements ITile {
 		return this.showHover && !this.showSelected && !this.isSelected;
 	}
 }
+
+/** Тип для конструктора плитки. */
+export type TTileConstructorParams = {
+	showSelected: boolean;
+	showHover: boolean;
+	posX: number;
+	posY: number;
+	cellWidth: number;
+	cellHeight: number;
+	isSelected: boolean;
+	onClick: <T extends ITile>(tile: T) => void;
+};

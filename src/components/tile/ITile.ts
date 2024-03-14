@@ -11,28 +11,34 @@ export interface ITile extends Container {
 	readonly id: number;
 
 	/** Экземпляр класса графики. */
-	graphics: Graphics;
+	readonly graphics: Graphics;
 
 	/** Флаг указывающий на выбор тайла. */
-	showSelected: boolean;
+	readonly showSelected: boolean;
 
 	/** Флаг указывающий на наведение. */
-	showHover: boolean;
+	readonly showHover: boolean;
 
 	/** Позиция по X. */
-	posX: number;
+	readonly posX: number;
 
 	/** Позиция по Y. */
-	posY: number;
+	readonly posY: number;
 
 	/** Ширина ячейки. */
-	cellWidth: number;
+	readonly cellWidth: number;
 
 	/** Высота ячейки. */
-	cellHeight: number;
+	readonly cellHeight: number;
 
 	/** Флаг указывающий, что тайл выбран. */
-	isSelected: boolean;
+	readonly isSelected: boolean;
+
+	/** Опции для иконки. */
+	readonly iconOption?: TIconOption;
+
+	/** Опции для текста. */
+	readonly textOptions?: TTextOptions;
 
 	/** Метод обрабатывает нажатие на тайл. */
 	handleClick(): void;
@@ -57,3 +63,18 @@ export enum ECursor {
 	notAllowed = 'not-allowed',
 	initial = 'initial'
 }
+
+/** Опции для иконки. */
+export type TIconOption = {
+	width: number;
+	height: number;
+	marginLeft: number;
+	marginTop: number;
+};
+
+/** тип опций текста. */
+export type TTextOptions = {
+	fontSize: number;
+	marginLeft: number;
+	marginTop: number;
+};
