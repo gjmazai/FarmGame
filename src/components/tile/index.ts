@@ -1,3 +1,3 @@
-export type { ITile } from './ITile';
+export * from './ITile';
 
 export * from './Tile';
