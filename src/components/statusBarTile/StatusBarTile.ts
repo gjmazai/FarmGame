@@ -43,12 +43,13 @@ export class StatusBarTile extends Tile implements IStatusBarTile {
 		this.updateValue(this.value - value);
 	}
 
-	private text: BitmapText;
-
-	private updateValue (newValue: number): void {
+	updateValue (newValue: number): void {
 		this.value = newValue;
 		this.text.text = String(this.value);
 	}
+
+	/** Текст в тайле. */
+	private text: BitmapText;
 
 	/** Метод делает установку зачений. */
 	private setup ({ iconTextureResource }: TStatusBarTileParams): void {
@@ -75,4 +76,4 @@ export class StatusBarTile extends Tile implements IStatusBarTile {
 	}
 }
 
-export type TStatusBarTileParams = TTileConstructorParams & Pick<IStatusBarTile, 'statusType' | 'value' | 'iconTextureResource'>;
+export type TStatusBarTileParams = TTileConstructorParams & Pick<IStatusBarTile, 'statusType' | 'value' | 'iconTextureResource' | 'id'>;

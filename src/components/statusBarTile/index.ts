@@ -1,3 +1,3 @@
 export * from './IStatusBarTile';
-
-export { StatusBarTile } from './StatusBarTile';
+export * from './StatusBarTileFactory';
+export * from './StatusBarTile';

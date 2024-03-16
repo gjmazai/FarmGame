@@ -1,10 +1,11 @@
 /**
  * Интерфейс плитки для статус бара.
  *
- *
+ * @author gjmazai
  */
 
 import { type Texture } from 'pixi.js';
+
 import { type ITile } from '../tile';
 
 export interface IStatusBarTile extends ITile {
@@ -19,6 +20,8 @@ export interface IStatusBarTile extends ITile {
 	add (value: number): void;
 	/** Метод отнимает от основного значения кол-во ресурса. */
 	sub (value: number): void;
+	/** Метод обновляет основное значение на новое. */
+	updateValue(newValue: number): void;
 }
 
 /** Тип ячейки для в статус баре. */
