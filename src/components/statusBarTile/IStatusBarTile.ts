@@ -9,7 +9,7 @@ import { type Texture } from 'pixi.js';
 import { type ITile } from '../tile';
 
 export interface IStatusBarTile extends ITile {
-	/** Тип ячейки для в статус баре. */
+	/** Тип ячейки в статус баре. */
 	readonly statusType: EStatusType;
 	/** Значение сущностей. */
 	readonly value: number;
