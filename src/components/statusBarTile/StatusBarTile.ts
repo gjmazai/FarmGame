@@ -15,14 +15,14 @@ export class StatusBarTile extends Tile implements IStatusBarTile {
 	value: number;
 	iconTextureResource: Texture;
 
-	iconOption: TIconOption = {
+	readonly iconOption: TIconOption = {
 		width: 16,
 		height: 24,
 		marginLeft: -25,
 		marginTop: -12
 	};
 
-	textOptions: TTextOptions = {
+	readonly textOptions: TTextOptions = {
 		fontSize: 20,
 		marginLeft: 0,
 		marginTop: -10

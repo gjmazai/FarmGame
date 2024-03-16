@@ -5,20 +5,27 @@
  */
 
 import { Inject, Service } from 'typedi';
+import { type Texture } from 'pixi.js';
 
 import { IGameLoader } from '../../gameLoader';
 
 import { EStatusType, type IStatusBarTile } from './IStatusBarTile';
 import { StatusBarTile, type TStatusBarTileParams } from './StatusBarTile';
-import { type Texture } from 'pixi.js';
 
-@Service('StatusBarTileFactory')
-export class StatusBarTileFactory {
+/**
+ * Интерфейс описывающий абстрактную фабрику по созданию плиток для статус бара.
+ */
+export interface IStatusBarTileFactory {
 	/**
-	 * Абстрактный метод для создания тайлов статус бара.
+	 * Фабричный метод для создания тайлов статус бара.
 	 * @param params - параметры для создания тайла статус бара.
 	 * @returns экземпляр класса тайла статус бара.
 	 */
+	createStatusBarTile(params: TStatusBartileFactoryParams): IStatusBarTile;
+}
+
+@Service('StatusBarTileFactory')
+export class StatusBarTileFactory implements StatusBarTileFactory {
 	createStatusBarTile (params: TStatusBartileFactoryParams): IStatusBarTile {
 		const factoryData: TStatusBarTileParams = {
 			iconTextureResource: this.getTextureByType(params.statusType),

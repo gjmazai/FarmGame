@@ -6,8 +6,6 @@
 
 import { type ColorSource, Container, Graphics } from 'pixi.js';
 
-import { getId } from '../../utils';
-
 import { type TColor, type ITile, ECursor } from './ITile';
 
 export class Tile extends Container implements ITile {
@@ -38,13 +36,14 @@ export class Tile extends Container implements ITile {
 		cellWidth,
 		cellHeight,
 		isSelected,
-		onClick
+		onClick,
+		id
 	}: TTileConstructorParams) {
 		super();
 		this.graphics = new Graphics();
 		this.addChild(this.graphics);
 		this.eventMode = 'static';
-		this.id = getId();
+		this.id = id;
 
 		this.showSelected = showSelected;
 		this.showHover = showHover;
@@ -131,6 +130,7 @@ export type TTileConstructorParams = {
 	showHover: boolean;
 	posX: number;
 	posY: number;
+	id: number;
 	cellWidth: number;
 	cellHeight: number;
 	isSelected: boolean;

@@ -13,8 +13,8 @@ import { type ITile } from '../tile';
 import {
 	type IStatusBarTile,
 	type TStatusBartileFactoryParams,
-	EStatusType,
-	StatusBarTileFactory
+	type IStatusBarTileFactory,
+	EStatusType
 } from '../statusBarTile';
 
 import { TYPE_TO_HOVER, TYPE_TO_SELECTED } from './constants';
@@ -141,7 +141,7 @@ export class StatusBar extends Container<IStatusBarTile> implements IStatusBar {
 	private readonly cellHeight: number = 40;
 
 	@Inject('StatusBarTileFactory')
-	private readonly statusBarTileFactory: StatusBarTileFactory;
+	private readonly statusBarTileFactory: IStatusBarTileFactory;
 }
 
 export type TStatusBarParams = {
