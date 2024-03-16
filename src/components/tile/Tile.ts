@@ -81,6 +81,34 @@ export class Tile extends Container implements ITile {
 		}
 	}
 
+	select (): void {
+		if (!this.isSelected) {
+			this.isSelected = true;
+		}
+		if (this.showSelected && this.isSelected) {
+			this.fillColor(Tile.COLOR.active);
+		}
+	}
+
+	deselect (): void {
+		if (this.isSelected) {
+			this.isSelected = false;
+		}
+		if (this.showSelected && !this.isSelected) {
+			this.fillColor(Tile.COLOR.regular);
+		}
+	}
+
+	toggle (): void {
+		if (this.isSelected) {
+			this.deselect();
+		} else {
+			this.select();
+		}
+	}
+
+	onClick: <T extends ITile>(tile: T) => void;
+
 	/** Метод закрашивает тайл. */
 	protected fillColor (color: ColorSource): void {
 		this.graphics.clear();
@@ -90,38 +118,6 @@ export class Tile extends Container implements ITile {
 		this.graphics.drawRect(this.posX, this.posY, this.cellWidth, this.cellHeight);
 		this.graphics.endFill();
 	}
-
-	/** Метод выбирает тайл. */
-	protected select (): void {
-		if (!this.isSelected) {
-			this.isSelected = true;
-		}
-		if (this.showSelected && this.isSelected) {
-			this.fillColor(Tile.COLOR.active);
-		}
-	}
-
-	/** Метод снимает выбор с тайла. */
-	protected deselect (): void {
-		if (this.isSelected) {
-			this.isSelected = false;
-		}
-		if (this.showSelected && !this.isSelected) {
-			this.fillColor(Tile.COLOR.regular);
-		}
-	}
-
-	/** Метод изменяет выбор тайла. */
-	protected toggle (): void {
-		if (this.isSelected) {
-			this.deselect();
-		} else {
-			this.select();
-		}
-	}
-
-	/** Пользовательский метод для обработки клика. Передается в конструктор. */
-	protected onClick?<T extends ITile>(tile: T): void;
 
 	/** Флаг того, что тайл отображается наведенным, но не выбранным. */
 	protected get isShowButNotSelected (): boolean {

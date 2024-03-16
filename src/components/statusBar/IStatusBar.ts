@@ -6,7 +6,7 @@
 
 import { type Container } from 'pixi.js';
 
-import { type IStatusBarTile } from '../statusBarTile';
+import { type EStatusType, type IStatusBarTile } from '../statusBarTile';
 
 export interface IStatusBar extends Container<IStatusBarTile> {
 	/** Общая ширина статус бара. */
@@ -22,12 +22,12 @@ export interface IStatusBar extends Container<IStatusBarTile> {
 	/** Количество пшена. */
 	readonly corn: number;
 
-	/** Метод обрабатывающий клик по тайлу. */
+	/** Обрабатывающий метод клика по тайлу. */
 	onTileClick?(tile: IStatusBarTile, shopBar: IStatusBar): void;
 	/** Добавить значение к ячейке. */
-	addValue(value: number): void;
+	addValue(value: number, type: EStatusType): void;
 	/** Отнять значение от ячейки. */
-	subValue(value: number): void;
+	subValue(value: number, type: EStatusType): void;
 	/** Продать яйцо. */
 	sellEggs(): void;
 	/** Продать молоко. */
