@@ -6,10 +6,9 @@
 
 import { Sprite, type Texture, BitmapText } from 'pixi.js';
 
-import { Tile, type TTileConstructorParams } from '../tile';
+import { Tile, type TTileConstructorParams, type TTextOptions, type TIconOption } from '../tile';
 
 import { type EStatusType, type IStatusBarTile } from './IStatusBarTile';
-import { type TTextOptions, type TIconOption } from '../tile/ITile';
 
 export class StatusBarTile extends Tile implements IStatusBarTile {
 	statusType: EStatusType;
@@ -44,12 +43,13 @@ export class StatusBarTile extends Tile implements IStatusBarTile {
 		this.updateValue(this.value - value);
 	}
 
-	private text: BitmapText;
-
-	private updateValue (newValue: number): void {
+	updateValue (newValue: number): void {
 		this.value = newValue;
 		this.text.text = String(this.value);
 	}
+
+	/** Текст в тайле. */
+	private text: BitmapText;
 
 	/** Метод делает установку зачений. */
 	private setup ({ iconTextureResource }: TStatusBarTileParams): void {
@@ -76,4 +76,4 @@ export class StatusBarTile extends Tile implements IStatusBarTile {
 	}
 }
 
-type TStatusBarTileParams = TTileConstructorParams & Pick<IStatusBarTile, 'statusType' | 'value' | 'iconTextureResource'>;
+export type TStatusBarTileParams = TTileConstructorParams & Pick<IStatusBarTile, 'statusType' | 'value' | 'iconTextureResource' | 'id'>;
