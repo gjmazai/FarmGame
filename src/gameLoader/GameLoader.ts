@@ -1,16 +1,17 @@
 /**
  * Модуль экспортирует класс игрового загрузчика.
- * 
+ *
  * @author gjmazai
  */
 
-import { Assets, Spritesheet } from "pixi.js";
+import { Assets, type Spritesheet } from 'pixi.js';
+import { Service } from 'typedi';
 
-import { IGameLoader, TSettings } from "./IGameLoader";
-import { LoaderUrls } from "./Urls";
-import { LoaderKeys } from "./Keys";
+import { type IGameLoader, type TSettings } from './IGameLoader';
+import { LoaderUrls } from './Urls';
+import { LoaderKeys } from './Keys';
 
-
+@Service('GameLoader')
 export class GameLoader implements IGameLoader {
 	loader: typeof Assets;
 
@@ -18,20 +19,20 @@ export class GameLoader implements IGameLoader {
 
 	spritesheet!: Spritesheet;
 
-	constructor() {
+	constructor () {
 		this.loader = Assets;
 	}
 
-	async loadAll(): Promise<void> {
+	async loadAll (): Promise<void> {
 		await this.loadSettings();
 		await this.loadResources();
 	}
 
-	async loadSettings(): Promise<void> {
+	async loadSettings (): Promise<void> {
 		this.settings = await fetch(LoaderUrls.Settings).then(async res => await res.json());
 	}
 
-	async loadResources(): Promise<void> {
+	async loadResources (): Promise<void> {
 		this.loader.add(
 			LoaderKeys.Tileset,
 			LoaderUrls.Spritesheet
