@@ -12,7 +12,7 @@ const { Eggs, Milks, Money, Corns } = EStatusType;
  * Коллекция соотношения типа тайла и текстуры.
  * @constant
  */
-export const TYPE_TO_HOVER: Map<EStatusType, boolean> = new Map<EStatusType, boolean>([
+export const TYPE_TO_HOVER: ReadonlyMap<EStatusType, boolean> = new Map<EStatusType, boolean>([
 	[Eggs, false],
 	[Money, true],
 	[Milks, true],
@@ -23,7 +23,7 @@ export const TYPE_TO_HOVER: Map<EStatusType, boolean> = new Map<EStatusType, boo
  * Коллекция соотношения типа тайла и текстуры.
  * @constant
  */
-export const TYPE_TO_SELECTED: Map<EStatusType, boolean> = new Map<EStatusType, boolean>([
+export const TYPE_TO_SELECTED: ReadonlyMap<EStatusType, boolean> = new Map<EStatusType, boolean>([
 	[Eggs, false],
 	[Money, true],
 	[Milks, false],
