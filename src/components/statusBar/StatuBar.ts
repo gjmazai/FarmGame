@@ -12,7 +12,7 @@ import { getId } from '../../utils';
 import { type ITile } from '../tile';
 import {
 	type IStatusBarTile,
-	type TStatusBartileFactoryParams,
+	type TStatusBarTileFactoryParams,
 	type IStatusBarTileFactory,
 	EStatusType
 } from '../statusBarTile';
@@ -77,18 +77,18 @@ export class StatusBar extends Container<IStatusBarTile> implements IStatusBar {
 
 	/** Метод делает установку компонента. */
 	private setup (): void {
-		for (const [key, tileType] of Object(EStatusType).values()) {
-			const x = key * this.cellWidth;
+		this.statusBarTypes.forEach((type, index) => {
+			const x = index * this.cellWidth;
 			const y = this.cellHeight;
 
-			const tile = this.statusBarTileFactory.createStatusBarTile(this.buildParams(x, y, tileType as EStatusType));
+			const tile = this.statusBarTileFactory.createStatusBarTile(this.buildParams(x, y, type));
 			this.addChild(tile);
-		}
+		});
 	}
 
 	/** Строит параметры для создания тайлов статус бара. */
-	private buildParams (x: number, y: number, type: EStatusType): TStatusBartileFactoryParams {
-		const params: TStatusBartileFactoryParams = {
+	private buildParams (x: number, y: number, type: EStatusType): TStatusBarTileFactoryParams {
+		return {
 			id: getId(),
 			cellHeight: this.cellHeight,
 			cellWidth: this.cellWidth,
@@ -101,7 +101,6 @@ export class StatusBar extends Container<IStatusBarTile> implements IStatusBar {
 			showSelected: TYPE_TO_SELECTED.get(type) ?? false,
 			value: this.idToInitValue.get(type) ?? 0
 		};
-		return params;
 	}
 
 	/** Возвращает тайл записанный в статус бар по его типу. */
@@ -139,6 +138,9 @@ export class StatusBar extends Container<IStatusBarTile> implements IStatusBar {
 
 	/** Высота ячейки. */
 	private readonly cellHeight: number = 40;
+
+	/** Кортеж типов дочерних ячеек. */
+	private readonly statusBarTypes: readonly EStatusType[] = [EStatusType.Money, EStatusType.Corns, EStatusType.Eggs, EStatusType.Milks];
 
 	@Inject('StatusBarTileFactory')
 	private readonly statusBarTileFactory: IStatusBarTileFactory;
