@@ -14,10 +14,10 @@ export interface ITile extends Container {
 	readonly graphics: Graphics;
 
 	/** Флаг указывающий на выбор тайла. */
-	readonly showSelected: boolean;
+	readonly showSelected?: boolean;
 
 	/** Флаг указывающий на наведение. */
-	readonly showHover: boolean;
+	readonly showHover?: boolean;
 
 	/** Позиция по X. */
 	readonly posX: number;
@@ -32,7 +32,7 @@ export interface ITile extends Container {
 	readonly cellHeight: number;
 
 	/** Флаг указывающий, что тайл выбран. */
-	readonly isSelected: boolean;
+	readonly isSelected?: boolean;
 
 	/** Опции для иконки. */
 	readonly iconOption?: TIconOption;
