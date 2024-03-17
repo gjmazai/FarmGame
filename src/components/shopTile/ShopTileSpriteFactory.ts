@@ -14,7 +14,7 @@ import { IGameLoader } from '../../gameLoader';
 import { EShopType } from './IShopTile';
 
 /** Интерфейс описывающий абстрактную фабрику спрайтов для магазина. */
-export interface IShopSpriteFactory {
+export interface IShopTileSpriteFactory {
 	/**
 	 * Фабричный метод для создания экземпляра иконки ресурса.
 	 * @param params - параметры текстуры для иконки.
@@ -32,7 +32,7 @@ export interface IShopSpriteFactory {
 }
 
 @Service('SpriteFactory')
-export class ShopSpriteFactory implements IShopSpriteFactory {
+export class ShopTileSpriteFactory implements IShopTileSpriteFactory {
 	createMoneyIcon (params: TIconParam): Sprite {
 		const moneyTexture = new Sprite(this.gameLoader.spritesheet.textures['icon-money.png']);
 		this.setGeometry(moneyTexture, params);

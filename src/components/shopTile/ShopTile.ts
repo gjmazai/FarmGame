@@ -5,13 +5,13 @@
  */
 
 import { BitmapText } from 'pixi.js';
+import { Inject } from 'typedi';
 
 import { type TTileConstructorParams, Tile, type TIconOption, type TTextOptions } from '../tile';
 
-import { type EShopType, type IShopTile } from './IShopTile';
 import { TYPE_TO_COST } from './constants';
-import { Inject } from 'typedi';
-import { IShopSpriteFactory, type TIconParam } from './SpriteFactory';
+import { type EShopType, type IShopTile } from './IShopTile';
+import { IShopTileSpriteFactory, type TIconParam } from './ShopTileSpriteFactory';
 
 export class ShopTile extends Tile implements IShopTile {
 	shopType: EShopType;
@@ -46,6 +46,7 @@ export class ShopTile extends Tile implements IShopTile {
 		this.setup();
 	}
 
+	/** Метод делает установку компонента. */
 	private setup (): void {
 		const resourseSprite = this.spriteFactory.createResourseIcon(this.buildParams(true), this.shopType);
 		const moneySprite = this.spriteFactory.createMoneyIcon(this.buildParams(false));
@@ -79,7 +80,7 @@ export class ShopTile extends Tile implements IShopTile {
 	}
 
 	@Inject('SpriteFactory')
-	private readonly spriteFactory: IShopSpriteFactory;
+	private readonly spriteFactory: IShopTileSpriteFactory;
 }
 
 export type TShopTileParams = TTileConstructorParams & Pick<IShopTile, 'shopType' | 'id'>;
