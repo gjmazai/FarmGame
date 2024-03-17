@@ -41,6 +41,7 @@ module.exports = {
 		"@typescript-eslint/method-signature-style": "off",
 		"@typescript-eslint/consistent-type-definitions": "off",
 		"@typescript-eslint/unbound-method": "off",
-    	"@typescript-eslint/no-confusing-void-expression": "off"
+    	"@typescript-eslint/no-confusing-void-expression": "off",
+		"@typescript-eslint/strict-boolean-expressions": "off"
 	},
 };
