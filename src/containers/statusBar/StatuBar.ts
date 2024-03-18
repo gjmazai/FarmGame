@@ -9,13 +9,13 @@ import { Container } from 'pixi.js';
 
 import { getId } from '../../utils';
 
-import { type ITile } from '../tile';
+import { type ITile } from '../../components/tile';
 import {
 	type IStatusBarTile,
 	type TStatusBarTileFactoryParams,
 	type IStatusBarTileFactory,
 	EStatusType
-} from '../statusBarTile';
+} from '../../components/statusBarTile';
 
 import { TYPE_TO_HOVER, TYPE_TO_SELECTED } from './constants';
 import { type IStatusBar } from './IStatusBar';

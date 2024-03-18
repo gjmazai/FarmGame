@@ -9,7 +9,7 @@
 import { Sprite, type Texture } from 'pixi.js';
 import { Inject, Service } from 'typedi';
 
-import { IGameLoader } from '../../gameLoader';
+import { IGameLoader } from '../../engine/gameLoader';
 
 import { EShopType } from './IShopTile';
 

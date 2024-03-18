@@ -7,7 +7,7 @@
 import { Application } from 'pixi.js';
 import 'reflect-metadata';
 
-import { GameLoader } from './gameLoader';
+import { GameLoader } from './engine/gameLoader';
 
 async function start (): Promise<void> {
 	const gameLoader = new GameLoader();

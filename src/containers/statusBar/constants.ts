@@ -4,7 +4,7 @@
  * @author gjmazai
  */
 
-import { EStatusType } from '../statusBarTile';
+import { EStatusType } from '../../components/statusBarTile';
 
 const { Eggs, Milks, Money, Corns } = EStatusType;
 

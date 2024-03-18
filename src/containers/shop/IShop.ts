@@ -6,7 +6,7 @@
 
 import { type Container } from 'pixi.js';
 
-import { type IShopTile } from '../shopTile';
+import { type IShopTile } from '../../components/shopTile';
 
 export interface IShop extends Container<IShopTile> {
 	/** Общая ширина магазина. */

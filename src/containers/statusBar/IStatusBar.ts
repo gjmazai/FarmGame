@@ -6,7 +6,7 @@
 
 import { type Container } from 'pixi.js';
 
-import { type EStatusType, type IStatusBarTile } from '../statusBarTile';
+import { type EStatusType, type IStatusBarTile } from '../../components/statusBarTile';
 
 export interface IStatusBar extends Container<IStatusBarTile> {
 	/** Общая ширина статус бара. */

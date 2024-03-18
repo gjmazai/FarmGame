@@ -5,12 +5,12 @@
  */
 
 import { Container } from 'pixi.js';
-import { type IShop } from './IShop';
-import { EShopType, type TShopTileParams, type IShopTile } from '../shopTile';
 import { Inject } from 'typedi';
-import { IShopTileFactory } from '../shopTile/ShopTileFactory';
+
+import { type TShopTileParams, type IShopTile, type ITile, IShopTileFactory, EShopType } from '../../components';
 import { getId } from '../../utils';
-import { type ITile } from '../tile';
+
+import { type IShop } from './IShop';
 
 export class Shop extends Container<IShopTile> implements IShop {
 	get totalWidth (): number {

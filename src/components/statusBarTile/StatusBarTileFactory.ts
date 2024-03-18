@@ -7,7 +7,7 @@
 import { Inject, Service } from 'typedi';
 import { type Texture } from 'pixi.js';
 
-import { IGameLoader } from '../../gameLoader';
+import { IGameLoader } from '../../engine/gameLoader';
 
 import { EStatusType, type IStatusBarTile } from './IStatusBarTile';
 import { StatusBarTile, type TStatusBarTileParams } from './StatusBarTile';
