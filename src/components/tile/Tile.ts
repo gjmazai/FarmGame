@@ -20,13 +20,13 @@ export class Tile extends Container implements ITile {
 
 	graphics: Graphics;
 	id: number;
-	showSelected: boolean;
-	showHover: boolean;
+	showSelected?: boolean;
+	showHover?: boolean;
 	posX: number;
 	posY: number;
 	cellWidth: number;
 	cellHeight: number;
-	isSelected: boolean;
+	isSelected?: boolean;
 
 	constructor ({
 		showSelected,
@@ -84,7 +84,7 @@ export class Tile extends Container implements ITile {
 		if (!this.isSelected) {
 			this.isSelected = true;
 		}
-		if (this.showSelected && this.isSelected) {
+		if ((this.showSelected) && this.isSelected) {
 			this.fillColor(Tile.COLOR.active);
 		}
 	}
@@ -120,19 +120,19 @@ export class Tile extends Container implements ITile {
 
 	/** Флаг того, что тайл отображается наведенным, но не выбранным. */
 	protected get isShowButNotSelected (): boolean {
-		return this.showHover && !this.showSelected && !this.isSelected;
+		return Boolean(this.showHover && !this.showSelected && !this.isSelected);
 	}
 }
 
 /** Тип для конструктора плитки. */
 export type TTileConstructorParams = {
-	showSelected: boolean;
-	showHover: boolean;
+	showSelected?: boolean;
+	showHover?: boolean;
 	posX: number;
 	posY: number;
 	id: number;
 	cellWidth: number;
 	cellHeight: number;
-	isSelected: boolean;
+	isSelected?: boolean;
 	onClick: <T extends ITile>(tile: T) => void;
 };
