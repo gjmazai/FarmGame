@@ -43,6 +43,7 @@ export interface IGridTile extends ITile {
 	readonly geretatedProgress?: Sprite;
 	/** Спрайт показывающий снижающийся прогресс жизни. */
 	readonly deathProgress?: Sprite;
+	readonly rectGraphics: StrokeRect;
 
 }
 
