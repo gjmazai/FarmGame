@@ -11,6 +11,10 @@ export interface IProgressBar extends Graphics {
 	readonly maxColor: number;
 	/** Минимальное значение цвета в графике. */
 	readonly minColor: number;
+	/** Максимальный цвет в RGB. */
+	readonly maxRgb: [number, number, number];
+	/** Минимальный цвет в RGB. */
+	readonly minRgb: [number, number, number];
 
 	/**
 	 * Метод преобразует цвет из числа в хекс.
