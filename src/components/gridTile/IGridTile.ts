@@ -7,6 +7,8 @@
 import { type Sprite } from 'pixi.js';
 
 import { type ITile } from '../tile';
+import { type IProgressBar } from '../progressBar';
+import { type IStrokeRect } from '../strokeRect';
 
 export interface IGridTile extends ITile {
 	/** Тип плитки на игровом поле. */
@@ -43,7 +45,10 @@ export interface IGridTile extends ITile {
 	readonly geretatedProgress?: Sprite;
 	/** Спрайт показывающий снижающийся прогресс жизни. */
 	readonly deathProgress?: Sprite;
-	readonly rectGraphics: StrokeRect;
+	/** Графика прогресса. */
+	readonly rectGraphics: IStrokeRect;
+	/** Прогресс бар. */
+	readonly progressBar: IProgressBar;
 
 }
 
