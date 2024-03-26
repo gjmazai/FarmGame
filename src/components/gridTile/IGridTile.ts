@@ -4,7 +4,7 @@
  * @author gjmazai
  */
 
-import { type Sprite } from 'pixi.js';
+import { AnimatedSprite, type Sprite } from 'pixi.js';
 
 import { type ITile } from '../tile';
 import { type IProgressBar } from '../progressBar';
@@ -33,23 +33,25 @@ export interface IGridTile extends ITile {
 	readonly cowBuildableSprite: Sprite;
 
 	/** Спрайт анимированной пшеницы, которую посадили на клетку. */
-	readonly cornAnimatedSprite: Sprite;
+	readonly cornAnimatedSprite: AnimatedSprite;
 	/** Спрайт анимированной курицы, которую посадили на клетку. */
-	readonly chickenAnimatedSprite: Sprite;
+	readonly chickenAnimatedSprite: AnimatedSprite;
 	/** Спрайт анимированной коровы, которую посадили на клетку. */
-	readonly cowAnimatedSprite: Sprite;
+	readonly cowAnimatedSprite: AnimatedSprite;
 
 	/** Спрайт показывающий снижающийся прогресс питания. */
-	readonly foodProgress?: Sprite;
+	readonly foodProgress?: IProgressBar;
 	/** Спрайт показывающий повышающийся прогресс генрации ресурсов. */
-	readonly geretatedProgress?: Sprite;
+	readonly geretatedProgress?: IProgressBar;
 	/** Спрайт показывающий снижающийся прогресс жизни. */
-	readonly deathProgress?: Sprite;
+	readonly deathProgress?: IProgressBar;
 	/** Графика прогресса. */
 	readonly rectGraphics: IStrokeRect;
 	/** Прогресс бар. */
 	readonly progressBar: IProgressBar;
 
+	/** Метод устанавливает тип плитки. */
+	setType(type: EGridType): void;
 }
 
 /** Список типов полей основного поля. */
