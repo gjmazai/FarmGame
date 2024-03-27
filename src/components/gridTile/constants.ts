@@ -4,6 +4,9 @@
  * @author gjmazai
  */
 
+import { StrokeRectParams } from '../strokeRect';
+import { EGridType } from './IGridTile';
+
 /** Тип описывающий параметры плиток. */
 export type TGridTileOption = {
 	width: number;
@@ -25,6 +28,19 @@ export const grassOptions: TGridTileOption = {
 	width: 40,
 	marginLeft: -20,
 	marginTop: -20
+};
+
+/**
+ * Опции для корма.
+ * @constant
+ */
+export const cornOptions: TGridTileOption = {
+	width: 26,
+	height: 26,
+	marginLeft: -13,
+	marginTop: -13,
+	animationSpeed: 0.05,
+	generateFactor: 1 / 10 / 1000
 };
 
 /**
@@ -70,12 +86,13 @@ export const foodOptions: TGridTileOption = {
  * Опции для прямоугольника со штрихом.
  * @constant
  */
-export const reactOptions: TGridTileOption = {
+export const rectOptions: StrokeRectParams = {
 	height: 30,
 	width: 20,
-	marginLeft: -15,
-	marginTop: -15,
-	color: 0xeec643
+	x: -15,
+	y: -15,
+	color: 0xeec643,
+	strokeWidth: 5
 };
 
 /**
@@ -89,3 +106,17 @@ export const deathOptions: TGridTileOption = {
 	marginTop: -5,
 	color: 0xeec60e35
 };
+
+/**
+ * Кортеж с типами поля.
+ * @constant
+ */
+export const gridTilesType: ReadonlyMap<EGridType, TGridTileOption> = new Map([
+	[EGridType.Grass, grassOptions],
+	[EGridType.Corn, cornOptions],
+	[EGridType.Chicken, chickenOptions],
+	[EGridType.Cow, cowOptions],
+	[EGridType.PossibleChicken, chickenOptions],
+	[EGridType.PossibleCorn, cornOptions],
+	[EGridType.PossibleCow, cornOptions]
+]);
