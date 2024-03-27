@@ -8,7 +8,7 @@ import { Graphics } from 'pixi.js';
 import { type IStrokeRect } from './IStrokeRect';
 
 export class StrokeRect extends Graphics implements IStrokeRect {
-	constructor ({ x, y, strokeWidth, widht, height, color }: StrokerectParams) {
+	constructor ({ x, y, strokeWidth, widht, height, color }: StrokeRectParams) {
 		super();
 		this.clear()
 			.beginFill(color)
@@ -21,11 +21,11 @@ export class StrokeRect extends Graphics implements IStrokeRect {
 }
 
 /** Тип для параметров конструктора прямоугольника статуса. */
-export type StrokerectParams = {
+export type StrokeRectParams = {
 	x: number;
 	y: number;
 	strokeWidth: number;
-	widht: number;
+	width: number;
 	height: number;
 	color: number;
 };
