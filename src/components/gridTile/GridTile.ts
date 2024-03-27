@@ -4,13 +4,16 @@
  * @author gjmazai
  */
 
-import { type AnimatedSprite, type Sprite } from 'pixi.js';
-import { Tile, type TTileConstructorParams } from '../tile';
-import { EGridType, type IGridTile } from './IGridTile';
-import { type IStrokeRect } from '../strokeRect';
-import { type IProgressBar } from '../progressBar';
+import { AnimatedSprite, Sprite } from 'pixi.js';
 import { Inject } from 'typedi';
+
+import { Tile, type TTileConstructorParams } from '../tile';
+import { IStrokeRectFactory, type IStrokeRect } from '../strokeRect';
+import { type IProgressBar } from '../progressBar';
+
 import { IGridTileFactory, type TGridtileFactoryMethodParams } from './GridTileFactory';
+import { EGridType, type IGridTile } from './IGridTile';
+import { gridTilesType, rectOptions } from './constants';
 
 export class GridTile extends Tile implements IGridTile {
 	gridType: EGridType;
@@ -39,7 +42,7 @@ export class GridTile extends Tile implements IGridTile {
 	}
 
 	setType (type: EGridType): void {
-
+		this.gridType = type;
 	}
 
 	/** Метод установки плитки. */
@@ -47,32 +50,55 @@ export class GridTile extends Tile implements IGridTile {
 		const x = this.posX + Math.round(this.x);
 		const y = this.posY + Math.round(this.y);
 
-		this.gridTilesType.forEach(type => {
+		gridTilesType.forEach((option, type) => {
 			const params: TGridtileFactoryMethodParams = {
 				type,
-				height: this.height,
-				width: this.width,
-				marginLeft: x,
-				marginTop: y,
-				...
+				height: option.height,
+				width: option.width,
+				marginLeft: x + option.marginLeft,
+				marginTop: y + option.marginTop,
+				animationSpeed: option.animationSpeed
 			};
 			const sprite = this.gridTileFactory.createGridtileSprite(params);
+			if (type === EGridType.Grass) {
+				sprite.alpha = 0.5;
+			}
 			this.addChild(sprite);
+			this.setSprite(type, sprite);
 		});
+
+		const rectGraphics = this.strokeRectParams.createStrokeRect({ ...rectOptions });
+		this.addChild(rectGraphics);
+		this.rectGraphics = rectGraphics;
 	}
 
-	// TODO здесь заменить на мапу соотношения типа и опций. 
-	/** Кортеж с типами поля. */
-	private readonly gridTilesType: readonly EGridType[] = [
-		EGridType.Grass,
-		EGridType.Corn,
-		EGridType.Chicken,
-		EGridType.Cow,
-		EGridType.PossibleChicken,
-		EGridType.PossibleCorn,
-		EGridType.PossibleCow
-	];
+	/** Метод устанавливает поля в зависимости от типа. */
+	private setSprite (type: EGridType, sprite: Sprite | AnimatedSprite): void {
+		switch (type) {
+			case EGridType.Chicken:
+				// Глупый TS не позволяет вынести проверку типа в функцию, поэтому приходится городить такие конструкции
+				if (sprite instanceof AnimatedSprite) this.chickenAnimatedSprite = sprite;
+				return;
+			case EGridType.Corn:
+				if (sprite instanceof AnimatedSprite) this.cornAnimatedSprite = sprite;
+				return;
+			case EGridType.Cow:
+				if (sprite instanceof AnimatedSprite) this.cowAnimatedSprite = sprite;
+				return;
+			case EGridType.PossibleChicken:
+				if (sprite instanceof Sprite) this.chickenBuildableSprite = sprite;
+				return;
+			case EGridType.PossibleCorn:
+				if (sprite instanceof Sprite) this.cornBuildableSprite = sprite;
+				return;
+			case EGridType.PossibleCow:
+				if (sprite instanceof Sprite) this.cowBuildableSprite = sprite;
+		}
+	}
 
 	@Inject('GridTileFactory')
 	private readonly gridTileFactory: IGridTileFactory;
+
+	@Inject('StrokeRectParams')
+	private readonly strokeRectParams: IStrokeRectFactory;
 }

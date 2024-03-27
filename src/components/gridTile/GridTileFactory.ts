@@ -9,7 +9,7 @@ import { AnimatedSprite, Sprite, type Texture } from 'pixi.js';
 
 import { IGameLoader } from '../../engine';
 
-import { type TGridTileOption } from './GridTileOptions';
+import { type TGridTileOption } from './constants';
 import { EGridType } from './IGridTile';
 
 export interface IGridTileFactory {
@@ -35,6 +35,7 @@ export class GridTileFactory implements IGridTileFactory {
 
 		if (sprite instanceof AnimatedSprite && params.animationSpeed) {
 			sprite.animationSpeed = params.animationSpeed * Math.random();
+			sprite.play();
 		}
 
 		return sprite;
