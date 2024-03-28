@@ -17,7 +17,7 @@ import { gridTilesType, rectOptions } from './constants';
 
 export class GridTile extends Tile implements IGridTile {
 	gridType: EGridType;
-	isFree: boolean;
+	isFree: boolean = true;
 	isOccupied: boolean;
 	isFeeding: boolean;
 
@@ -43,6 +43,34 @@ export class GridTile extends Tile implements IGridTile {
 
 	setType (type: EGridType): void {
 		this.gridType = type;
+		this.hideAllSprites();
+
+		switch (type) {
+			case EGridType.Chicken:
+				this.chickenAnimatedSprite.visible = true;
+				this.isOccupied = true;
+				return;
+			case EGridType.Corn:
+				this.cornAnimatedSprite.visible = true;
+				this.isOccupied = true;
+				return;
+			case EGridType.Cow:
+				this.cowAnimatedSprite.visible = true;
+				this.isOccupied = true;
+				return;
+			case EGridType.PossibleChicken:
+				this.chickenBuildableSprite.visible = true;
+				return;
+			case EGridType.PossibleCorn:
+				this.cornBuildableSprite.visible = true;
+				return;
+			case EGridType.PossibleCow:
+				this.cowBuildableSprite.visible = true;
+				return;
+			case EGridType.PossibleFeedChicken:
+			case EGridType.PossibleFeedCow:
+				this.rectGraphics.visible = true;
+		}
 	}
 
 	/** Метод установки плитки. */
@@ -94,6 +122,17 @@ export class GridTile extends Tile implements IGridTile {
 			case EGridType.PossibleCow:
 				if (sprite instanceof Sprite) this.cowBuildableSprite = sprite;
 		}
+	}
+
+	/** Метод скрывает все спрайты. */
+	private hideAllSprites (): void {
+		const sprites = [
+			this.chickenAnimatedSprite, this.chickenBuildableSprite,
+			this.cowAnimatedSprite, this.cowBuildableSprite,
+			this.cornAnimatedSprite, this.cornBuildableSprite,
+			this.rectGraphics
+		];
+		sprites.forEach(sprite => { sprite.visible = false; });
 	}
 
 	@Inject('GridTileFactory')
