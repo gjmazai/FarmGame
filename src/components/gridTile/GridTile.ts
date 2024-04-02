@@ -9,17 +9,14 @@ import { Inject } from 'typedi';
 
 import { Tile, type TTileConstructorParams } from '../tile';
 import { IStrokeRectFactory, type IStrokeRect } from '../strokeRect';
-import { type IProgressBar } from '../progressBar';
+import { IProgressBarFactory, type IProgressBar } from '../progressBar';
 
 import { IGridTileFactory, type TGridtileFactoryMethodParams } from './GridTileFactory';
 import { EGridType, type IGridTile } from './IGridTile';
-import { gridTilesType, rectOptions } from './constants';
+import { foodOptions, gridTilesType, rectOptions } from './constants';
 
 export class GridTile extends Tile implements IGridTile {
 	gridType: EGridType;
-	isFree: boolean = true;
-	isOccupied: boolean;
-	isFeeding: boolean;
 
 	cornBuildableSprite: Sprite;
 	chickenBuildableSprite: Sprite;
@@ -41,37 +38,110 @@ export class GridTile extends Tile implements IGridTile {
 		this.setType(EGridType.Grass);
 	}
 
+	get isFree (): boolean {
+		return [
+			EGridType.PossibleChicken,
+			EGridType.PossibleCorn,
+			EGridType.PossibleCow,
+			EGridType.Grass
+		].includes(this.gridType);
+	}
+
+	get isOccupied (): boolean {
+		return [
+			EGridType.Chicken,
+			EGridType.Corn,
+			EGridType.Cow
+		].includes(this.gridType);
+	}
+
+	get isFeeding (): boolean {
+		return [
+			EGridType.PossibleFeedChicken,
+			EGridType.PossibleFeedCow,
+			EGridType.Cow,
+			EGridType.Chicken
+		].includes(this.gridType);
+	}
+
 	setType (type: EGridType): void {
 		this.gridType = type;
-		this.hideAllSprites();
 
 		switch (type) {
 			case EGridType.Chicken:
 				this.chickenAnimatedSprite.visible = true;
-				this.isOccupied = true;
-				return;
+				this.appendProgressBars();
+				break;
 			case EGridType.Corn:
 				this.cornAnimatedSprite.visible = true;
-				this.isOccupied = true;
-				return;
+				this.appendProgressBars();
+				break;
 			case EGridType.Cow:
 				this.cowAnimatedSprite.visible = true;
-				this.isOccupied = true;
-				return;
+				this.appendProgressBars();
+				break;
 			case EGridType.PossibleChicken:
 				this.chickenBuildableSprite.visible = true;
-				return;
+				break;
 			case EGridType.PossibleCorn:
 				this.cornBuildableSprite.visible = true;
-				return;
+				break;
 			case EGridType.PossibleCow:
 				this.cowBuildableSprite.visible = true;
-				return;
-			case EGridType.PossibleFeedChicken:
-			case EGridType.PossibleFeedCow:
-				this.rectGraphics.visible = true;
+				break;
+		}
+		if (type === EGridType.PossibleFeedChicken || type === EGridType.PossibleFeedCow) {
+			this.rectGraphics.visible = true;
+		} else {
+			this.hideAllSprites();
 		}
 	}
+
+	appendProgressBars (): void {
+		const { gridType, generatedValue, posX, posY, width, height, foodValue } = this;
+		const x = posX + Math.round(width / 2);
+		const y = posY + Math.round(height / 2);
+		/** Проверка на вставку генерации ресурсов. */
+		if ([
+			EGridType.PossibleCorn,
+			EGridType.PossibleChicken,
+			EGridType.PossibleCow
+		].includes(gridType)) {
+			const typeToMinColor: Record<string, number> = {
+				[EGridType.PossibleCorn]: 0xeec643,
+				[EGridType.PossibleChicken]: 0xeef0f2,
+				[EGridType.PossibleCow]: 0x0d21a1
+			};
+			this.geretatedProgress = this.progressBarFactory.createProgressBar({
+				x,
+				y,
+				maxColor: typeToMinColor[gridType],
+				minColor: typeToMinColor[gridType],
+				value: generatedValue
+			});
+			this.addChild(this.geretatedProgress);
+		}
+		/** Проверка на вставку прогресса, когда нужно покормить милое животное. */
+		if ([
+			EGridType.PossibleChicken,
+			EGridType.PossibleCow
+		].includes(gridType)) {
+			this.foodProgress = this.progressBarFactory.createProgressBar({
+				x: x + foodOptions.marginLeft,
+				y: y + foodOptions.marginTop,
+				value: foodValue,
+				minColor: 0xff0000,
+				maxColor: 0x00ff00
+			});
+			this.addChild(this.foodProgress);
+		}
+	}
+
+	/** Значение генерации. */
+	private readonly generatedValue: number = 0;
+
+	/** Значеине еды на ячейке. */
+	private readonly foodValue: number = 0;
 
 	/** Метод установки плитки. */
 	private setup (): void {
@@ -140,4 +210,7 @@ export class GridTile extends Tile implements IGridTile {
 
 	@Inject('StrokeRectParams')
 	private readonly strokeRectParams: IStrokeRectFactory;
+
+	@Inject('ProgressBarFactory')
+	private readonly progressBarFactory: IProgressBarFactory;
 }

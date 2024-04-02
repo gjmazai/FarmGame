@@ -4,7 +4,7 @@
  * @author gjmazai
  */
 
-import { AnimatedSprite, type Sprite } from 'pixi.js';
+import { type AnimatedSprite, type Sprite } from 'pixi.js';
 
 import { type ITile } from '../tile';
 import { type IProgressBar } from '../progressBar';

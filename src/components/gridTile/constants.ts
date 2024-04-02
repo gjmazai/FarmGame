@@ -4,7 +4,7 @@
  * @author gjmazai
  */
 
-import { StrokeRectParams } from '../strokeRect';
+import { type StrokeRectParams } from '../strokeRect';
 import { EGridType } from './IGridTile';
 
 /** Тип описывающий параметры плиток. */
