@@ -79,4 +79,5 @@ export type TProgressBarParams = {
 	y: number;
 	minColor: number;
 	maxColor: number;
+	value: number;
 };
